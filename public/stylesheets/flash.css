@@ -1,0 +1,21 @@
+.alert {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    margin-top: 10px;
+    width: 50%;
+}
+
+@media (max-width: 870px) {
+    .alert {
+        width: 80%;
+    }
+}
+
+@media (max-width: 550px) {
+    .alert {
+        width: 100%;
+    }
+}

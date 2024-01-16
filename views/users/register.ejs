@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="stylesheets/register.css">
+</head>
+
+<body>
+    <%- include('../partials/flash')%>
+        <div id="register-popup">
+            <div id="register-popup-main">
+                <button id="register-back-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="white"
+                        version="1.1" class="register-back-btn-svg" viewBox="0 0 330 330" xml:space="preserve">
+                        <path stroke="#182f3d" stroke-width="1"
+                            d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001  c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213  C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606  C255,161.018,253.42,157.202,250.606,154.389z" />
+                    </svg>
+                </button>
+                <svg id="register-popup-close-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"
+                    version="1.1">
+                    <path
+                        d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z" />
+                </svg>
+                <div id="register-form-main">
+                    <p class="register-main-p">Sign up to see Game History</p>
+                    <form action="/register" method="POST" id="register-form">
+
+                        <div id="register-email">
+                            <label id="register-email-label" for="register-email-input">Email</label>
+                            <input id="register-email-input" type="email" maxlength="50" name="email" required>
+                        </div>
+                        <p id="register-email-warning">Please enter a valid email.</p>
+
+                        <div id="register-username">
+                            <label id="register-username-label" for="register-username-input">Username</label>
+                            <input id="register-username-input" type="username" maxlength="50" name="username" required>
+                        </div>
+                        <p id="register-username-warning">Username need to be minimum 5 letters.</p>
+
+                        <div id="register-password">
+                            <label id="register-password-label" for="register-password-input">Password</label>
+                            <div class="register-password-input-and-btn-reveal">
+                                <input id="register-password-input" type="password" name="password" maxlength="50"
+                                    required>
+                                <div role="button" class="register-btn-reveal-password-main"
+                                    id="register-btn-reveal-password-main">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" class="register-btn-reveal-password">
+                                        <g>
+                                            <path
+                                                d="M12 21c-7.605 0-10.804-8.296-10.937-8.648L.932 12l.131-.352C1.196 11.295 4.394 3 12 3s10.804 8.296 10.937 8.648l.131.352-.131.352C22.804 12.705 19.606 21 12 21zm-8.915-9c.658 1.467 3.5 7 8.915 7s8.257-5.533 8.915-7c-.658-1.467-3.5-7-8.915-7s-8.257 5.533-8.915 7zM12 16c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="register-btn-reveal-password-main"
+                                    id='register-btn-not-reveal-password-main' role="button">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" class="register-btn-reveal-password">
+                                        <g>
+                                            <path
+                                                d="M3.693 21.707l-1.414-1.414 2.429-2.429c-2.479-2.421-3.606-5.376-3.658-5.513l-.131-.352.131-.352c.133-.353 3.331-8.648 10.937-8.648 2.062 0 3.989.621 5.737 1.85l2.556-2.557 1.414 1.414L3.693 21.707zm-.622-9.706c.356.797 1.354 2.794 3.051 4.449l2.417-2.418c-.361-.609-.553-1.306-.553-2.032 0-2.206 1.794-4 4-4 .727 0 1.424.192 2.033.554l2.263-2.264C14.953 5.434 13.512 5 11.986 5c-5.416 0-8.258 5.535-8.915 7.001zM11.986 10c-1.103 0-2 .897-2 2 0 .178.023.352.067.519l2.451-2.451c-.167-.044-.341-.067-.519-.067zm10.951 1.647l.131.352-.131.352c-.133.353-3.331 8.648-10.937 8.648-.709 0-1.367-.092-2-.223v-2.047c.624.169 1.288.27 2 .27 5.415 0 8.257-5.533 8.915-7-.252-.562-.829-1.724-1.746-2.941l1.438-1.438c1.53 1.971 2.268 3.862 2.33 4.027z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="register-password-warning">Your password needs to be at least 8 characters.</p>
+
+                        <div id="register-password-second">
+                            <label id="register-password-label-second"
+                                for="register-password-input-second">Password</label>
+                            <div class="register-password-input-and-btn-reveal-second">
+                                <input id="register-password-input-second" type="password" maxlength="50" required>
+                                <div role="button" class="register-btn-reveal-password-main-second"
+                                    id="register-btn-reveal-password-main-second">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"
+                                        class="register-btn-reveal-password-second">
+                                        <g>
+                                            <path
+                                                d="M12 21c-7.605 0-10.804-8.296-10.937-8.648L.932 12l.131-.352C1.196 11.295 4.394 3 12 3s10.804 8.296 10.937 8.648l.131.352-.131.352C22.804 12.705 19.606 21 12 21zm-8.915-9c.658 1.467 3.5 7 8.915 7s8.257-5.533 8.915-7c-.658-1.467-3.5-7-8.915-7s-8.257 5.533-8.915 7zM12 16c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="register-btn-reveal-password-main-second"
+                                    id='register-btn-not-reveal-password-main-second' role="button">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"
+                                        class="register-btn-reveal-password-second">
+                                        <g>
+                                            <path
+                                                d="M3.693 21.707l-1.414-1.414 2.429-2.429c-2.479-2.421-3.606-5.376-3.658-5.513l-.131-.352.131-.352c.133-.353 3.331-8.648 10.937-8.648 2.062 0 3.989.621 5.737 1.85l2.556-2.557 1.414 1.414L3.693 21.707zm-.622-9.706c.356.797 1.354 2.794 3.051 4.449l2.417-2.418c-.361-.609-.553-1.306-.553-2.032 0-2.206 1.794-4 4-4 .727 0 1.424.192 2.033.554l2.263-2.264C14.953 5.434 13.512 5 11.986 5c-5.416 0-8.258 5.535-8.915 7.001zM11.986 10c-1.103 0-2 .897-2 2 0 .178.023.352.067.519l2.451-2.451c-.167-.044-.341-.067-.519-.067zm10.951 1.647l.131.352-.131.352c-.133.353-3.331 8.648-10.937 8.648-.709 0-1.367-.092-2-.223v-2.047c.624.169 1.288.27 2 .27 5.415 0 8.257-5.533 8.915-7-.252-.562-.829-1.724-1.746-2.941l1.438-1.438c1.53 1.971 2.268 3.862 2.33 4.027z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="register-password-warning-second">Your passwords needs to be same.</p>
+                        <button id="register-btn-profile" class="register-btn-disable">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="javascripts/register.js"></script>
+</body>
+
+</html>

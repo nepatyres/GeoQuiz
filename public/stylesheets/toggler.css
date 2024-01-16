@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'Inter-Regular';
+    src: url('../../assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../../assets/fonts/Raleway/Raleway-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto';
+    src: url('../../assets/fonts/noto/NotoSansLinearA-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Playfair';
+    src: url('../../assets/fonts/Playfair/PlayfairDisplay-Regular.ttf') format('truetype');
+}
+
+#login-btn {
+    width: 45px;
+    height: 45px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 1s ease;
+}
+
+.navbar-profile-svg {
+    stroke: rgba(255, 255, 255, 1);
+    stroke-width: 0.8;
+    padding: 8px;
+    border-radius: 50%;
+    margin-top: 2px;
+    transition: fill 3s ease;
+}
+
+.navbar-profile-svg path {
+    fill: white;
+}
+
+.navbar-profile-svg:hover {
+    fill: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transition: fill 3s ease;
+}
+
+.navbar-toggler {
+    width: 45px;
+    height: 45px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.home-nav-toggler-span {
+    stroke: rgba(255, 255, 255, 1);
+    stroke-width: 1.8;
+    border-radius: 50%;
+    padding: 7px;
+    transition: stroke 5s ease;
+    transition: background-color 1s ease, stroke 3s ease;
+}
+
+.home-nav-toggler-span:hover {
+    stroke: rgba(255, 255, 255, 0.6);
+    background-color: #c8dae4;
+    border-radius: 50%;
+    transition: background-color 1s ease, stroke 3s ease;
+}
+
+#toggler-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    backdrop-filter: blur(60px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    margin: 0;
+}
+
+.con-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+#close-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: end;
+}
+
+#close-btn-svg {
+    fill: rgba(255, 255, 255, 1);
+    stroke-width: 0.1;
+    border-radius: 50%;
+    transition: background-color 1s ease, fill 3s ease;
+    width: 45px;
+    height: 45px;
+}
+
+#close-btn-svg:hover {
+    fill: rgba(255, 255, 255, 0.6);
+    background-color: #c8dae4;
+    border-radius: 50%;
+    transition: background-color 1s ease, fill 3s ease;
+}
+
+.con-column {
+    font-size: 80px;
+    text-align: center;
+    animation: slideIn 0.8s ease-in-out forwards;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    padding-left: 0;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(18%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.con-row {
+    list-style-type: none;
+    gap: 120px;
+}
+
+.link-to-con {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Playfair';
+    font-weight: 100;
+    transition: color 1s ease;
+}
+
+.link-to-con:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Playfair';
+    font-weight: 100;
+}

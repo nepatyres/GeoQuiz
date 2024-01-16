@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoQuiz</title>
+    <link rel="stylesheet" href="stylesheets/home.css">
+</head>
+
+<body>
+    <div class='section'>
+        <img class="background transition" id="moveableBackground" src="../assets/images/loader-background.png" alt="">
+        <div class="toggler-main">
+            <button id="login-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    width="30" height="30" viewBox="0 0 256 256" xml:space="preserve" class="navbar-profile-svg">
+                    <defs>
+                    </defs>
+                    <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                        <path
+                            d="M 86.114 90 h -6.067 c 0 -19.325 -15.722 -35.047 -35.047 -35.047 C 25.675 54.953 9.954 70.675 9.954 90 H 3.886 C 3.886 67.329 22.33 48.886 45 48.886 C 67.671 48.886 86.114 67.329 86.114 90 z"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path
+                            d="M 45 46.488 c -12.817 0 -23.244 -10.427 -23.244 -23.244 S 32.183 0 45 0 c 12.816 0 23.244 10.427 23.244 23.244 S 57.816 46.488 45 46.488 z M 45 6.067 c -9.471 0 -17.176 7.705 -17.176 17.176 c 0 9.471 7.705 17.177 17.176 17.177 c 9.471 0 17.176 -7.705 17.176 -17.177 C 62.176 13.773 54.471 6.067 45 6.067 z"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    </g>
+                </svg>
+            </button>
+
+
+            <button id='toggler' class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" class='home-nav-toggler-span' width="34" height="34"
+                    viewBox="0 0 23 16">
+                    <g class='home-nav-toggler-svg' fill-rule="evenodd" stroke-linecap="round">
+                        <path d="M3.429.75h15M1.429 7.75h20M3.429 14.80h15" />
+                    </g>
+                </svg>
+            </button>
+            <div id="toggler-popup">
+                <div class="con-container">
+                    <button id="close-btn">
+                        <svg id="close-btn-svg" class="background-transition" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 1024 1024" version="1.1">
+                            <path
+                                d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z" />
+                        </svg>
+                    </button>
+                    <ul class="con-column">
+                        <li class="con-row">
+                            <a class="link-to-con" aria-current="page" href="/world">World</a>
+                        </li>
+                        <li class="con-row">
+                            <a class="link-to-con" aria-current="page" href="/as">Asia</a>
+                        </li>
+                        <li class="con-row">
+                            <a class="link-to-con" aria-current="page" href="/af">Africa</a>
+                        </li>
+                        <li class="con-row">
+                            <a class="link-to-con" aria-current="page" href="/am">Americas</a>
+                        </li>
+                        <li class="con-row">
+                            <a class="link-to-con" aria-current="page" href="/eu">Europe</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="logo">GeoQuiz</div>
+            <div class="main-content">
+                <h1>Begin your geography learning <br> journey here</h1>
+                <button class="link-to-main" id="link-to-main">Explore the World</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="javascripts/home.js"></script>
+</body>
+
+</html>

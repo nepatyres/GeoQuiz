@@ -1,0 +1,314 @@
+@font-face {
+    font-family: 'Inter-Regular';
+    src: url('../../assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../../assets/fonts/Raleway/Raleway-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto';
+    src: url('../../assets/fonts/noto/NotoSansLinearA-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Playfair';
+    src: url('../../assets/fonts/Playfair/PlayfairDisplay-Medium.ttf') format('truetype');
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    background-color: #182f3d;
+}
+
+.profile-content-main {
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-game-history {
+    font-size: 50px;
+    font-family: 'Raleway';
+    justify-content: center;
+    text-align: center;
+    margin-top: 0px;
+    color: rgba(255, 255, 255, .9);
+}
+
+.profile-table {
+    border: 1px solid rgba(255, 255, 255, .6);
+    border-radius: 20px;
+    padding: 5px 55px;
+}
+
+.profile-table tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.profile-tr-first {
+    font-size: 25px;
+    color: rgb(83, 83, 83);
+    margin-bottom: 10px;
+}
+
+.profile-tr-else {
+    font-size: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgba(255, 255, 255, .7);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.profile-tr-else:last-child {
+    border-bottom: none;
+}
+
+.profile-table td {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Noto';
+}
+
+.profile-continent {
+    text-align: start !important;
+    justify-content: start !important;
+}
+
+#profile-logout-btn {
+    color: white;
+    border: 1px solid rgb(255, 255, 255, 0.25);
+    padding: 7px 15px;
+    border-radius: 30px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Raleway';
+    transition: 1s ease-in-out;
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+}
+
+#profile-logout-btn:hover {
+    background-color: rgba(41, 59, 70, .5);
+    transition: 1s ease-in-out;
+}
+
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .toggler-main {
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+} */
+
+
+#toggler-btn,
+#back-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: background-color 1s ease;
+    border-radius: 50%;
+}
+
+#toggler-btn {
+    margin-right: 26.5px;
+    margin-top: 22px;
+}
+
+#back-btn {
+    margin-left: 25px;
+    margin-top: 22px;
+}
+
+#toggler-btn:hover,
+#back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 1s ease;
+    border-radius: 50%;
+}
+
+
+.toggler-btn-svg {
+    stroke: white;
+    stroke-width: 1.8;
+    width: 34px;
+    height: 34px;
+    margin-top: 2px;
+    transition: stroke 3s ease;
+}
+
+.toggler-btn-svg:hover {
+    stroke: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transition: stroke 3s ease;
+}
+
+.back-btn-svg {
+    fill: white;
+    height: 23.5px;
+    width: 23.5px;
+    transition: fill 3s ease;
+    transform: rotate(180deg);
+    margin-right: 2px;
+    margin-top: 1px;
+    stroke-linecap: square;
+}
+
+.back-btn-svg:hover {
+    fill: rgba(255, 255, 255, 0.6) !important;
+    transition: fill 3s ease;
+}
+
+#toggler-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    backdrop-filter: blur(60px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    margin: 0;
+}
+
+.con-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+#close-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: end;
+}
+
+#close-btn-svg {
+    fill: rgba(255, 255, 255, 1);
+    stroke-width: 0.1;
+    border-radius: 50%;
+    transition: background-color 1s ease, fill 3s ease;
+    width: 45px;
+    height: 45px;
+}
+
+#close-btn-svg:hover {
+    fill: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color 1s ease, fill 3s ease;
+}
+
+.con-column {
+    font-size: 80px;
+    text-align: center;
+    animation: slideIn 0.8s ease-in-out forwards;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    padding-left: 0;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(18%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.con-row {
+    list-style-type: none;
+    gap: 120px;
+}
+
+.link-to-con {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Playfair';
+    font-weight: 100;
+    transition: color 1s ease;
+}
+
+.link-to-con:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Playfair';
+    font-weight: 100;
+}
+
+@media (width < 1050px) {
+    .profile-content-main {
+        max-width: 80%;
+    }
+
+    .profile-table {
+        padding: 5px 15px;
+    }
+}
+
+@media(width < 800px) {
+    .profile-content-main {
+        max-width: 95%;
+    }
+
+    .profile-table tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .profile-tr-first {
+        font-size: 22px;
+        color: rgb(83, 83, 83);
+    }
+
+    .profile-tr-else {
+        font-size: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: rgba(255, 255, 255, .7);
+    }
+
+    .profile-table td {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-family: 'Noto';
+    }
+}

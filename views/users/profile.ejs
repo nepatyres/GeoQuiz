@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div class="main-nav">
+            <button id="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="white"
+                    version="1.1" class="back-btn-svg" viewBox="0 0 330 330" xml:space="preserve">
+                    <path stroke-width="1"
+                        d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001  c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213  C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606  C255,161.018,253.42,157.202,250.606,154.389z" />
+                </svg>
+            </button>
+            <button id='toggler-btn' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" class='toggler-btn-svg' viewBox="0 0 23 16">
+                    <g class='home-nav-toggler-svg' fill-rule="evenodd" stroke-linecap="round">
+                        <path d="M3.429.75h15M1.429 7.75h20M3.429 14.80h15" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+        <div class="profile-content-main">
+            <h2 class="profile-game-history">Game History:</h2>
+            <% if (userStats && userStats.length> 0) { %>
+                <table class="profile-table">
+                    <tr class="profile-tr-first">
+                        <td class="profile-continent">Continent</td>
+                        <td>Score</td>
+                        <td>Attempts</td>
+                        <td>Time</td>
+                    </tr>
+                    <% userStats.forEach(stats=> { %>
+                        <tr class="profile-tr-else">
+                            <td class="profile-continent">
+                                <%= stats.continent %>
+                            </td>
+                            <td>
+                                <%= stats.score %>
+                            </td>
+                            <td>
+                                <%= stats.attempts %>
+                            </td>
+                            <td>
+                                <%= stats.time %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </table>
+                <% } else { %>
+                    <p class="profile-game-history">No games played yet.</p>
+                    <% } %>
+                        <button id="profile-logout-btn">Logout</button>
+        </div>
+    </div>
+    <div id="toggler-popup">
+        <div class="con-container">
+            <button id="close-btn">
+                <svg id="close-btn-svg" class="background-transition" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1024 1024" version="1.1">
+                    <path
+                        d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z" />
+                </svg>
+            </button>
+            <ul class="con-column">
+                <li class="con-row">
+                    <a class="link-to-con" aria-current="page" href="/world">World</a>
+                </li>
+                <li class="con-row">
+                    <a class="link-to-con" aria-current="page" href="/as">Asia</a>
+                </li>
+                <li class="con-row">
+                    <a class="link-to-con" aria-current="page" href="/af">Africa</a>
+                </li>
+                <li class="con-row">
+                    <a class="link-to-con" aria-current="page" href="/am">Americas</a>
+                </li>
+                <li class="con-row">
+                    <a class="link-to-con" aria-current="page" href="/eu">Europe</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    </h1>
+    <script src="/javascripts/profile.js"></script>
+</body>
+
+</html>

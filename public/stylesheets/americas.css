@@ -1,0 +1,410 @@
+@font-face {
+    font-family: 'Inter-Regular';
+    src: url('../../assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../../assets/fonts/Raleway/Raleway-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto';
+    src: url('../../assets/fonts/noto/NotoSansLinearA-Regular.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #142733;
+    user-select: none;
+}
+
+#quiz-popup {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    transition: opacity 1s, transform 1s;
+}
+
+.popup {
+    padding: 0;
+    margin: 0;
+    border-radius: 15px;
+    position: relative;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    background-color: #142733;
+}
+
+.popup-content-main {
+    margin-top: 15%;
+}
+
+#quiz-popup-close-btn {
+    height: 45px;
+    width: 45px;
+    display: flex;
+    cursor: pointer;
+    fill: rgba(255, 255, 255, 0.8) !important;
+    transition: background-color 1s ease, fill 3s ease;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 12px;
+    margin-top: 12px;
+    border-radius: 50px;
+}
+
+#quiz-popup-close-btn:hover {
+    fill: rgba(255, 255, 255, 0.6) !important;
+    background-color: #182f3d;
+    transition: background-color 1s ease, fill 3s ease;
+}
+
+h1 {
+    color: white;
+    font-family: 'Inter-Regular';
+}
+
+.stats-main {
+    display: grid;
+    flex-direction: row;
+    justify-content: space - between;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Inter-Regular';
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 20px;
+    margin-top: 60px;
+}
+
+#score-main,
+#attempts-main,
+#time-main {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#quiz-score,
+#quiz-attempts,
+#quiz-time {
+    color: white;
+}
+
+#new-game-btn {
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 255, 255, 0.25);
+    border-radius: 30px;
+    padding: 15px 45px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 80px;
+    font-size: 20px;
+    font-family: 'Raleway';
+    transition: 1s ease-in-out;
+}
+
+#new-game-btn:hover {
+    background-color: #182f3d;
+    transition: 1s ease-in-out;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+}
+
+#nav {
+    width: 100%;
+    height: 86px;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(29px);
+    align-items: center;
+    display: flex;
+}
+
+.nav-container {
+    display: grid;
+    flex-direction: row;
+    width: 90%;
+    margin: 0 auto;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.main-timer {
+    flex-direction: row;
+    display: flex;
+    justify-content: flex - start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+#btn-pause-svg,
+#btn-resume-svg {
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    fill: white;
+    border: none;
+    vertical-align: middle;
+}
+
+#btn-resume-svg {
+    display: none;
+}
+
+#btn-pause {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#btn-pause rect {
+    fill: white !important;
+}
+
+#timer {
+    color: white;
+    font-size: 30px;
+    font-family: 'Inter-Regular';
+    width: 100px;
+}
+
+#quiz-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#country-name {
+    font-family: 'Inter-Regular';
+    font-size: 50px;
+    color: white;
+    justify-content: center;
+    text-align: center;
+}
+
+#skip-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#skip-btn-svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+#toggler-main {
+    position: absolute;
+    top: 19px;
+    right: 33px;
+}
+
+#main-map {
+    display: flex;
+    height: 100vh;
+    background-color: #bfd7e6;
+    width: 100%;
+    position: fixed;
+}
+
+#wrapper {
+    height: 100vh;
+    width: 100%;
+    background-color: #bfd7e6;
+    cursor: grab;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.path-country {
+    fill: rgb(126, 167, 175);
+    stroke: #bfd7e6;
+    stroke-width: 0.8px;
+    cursor: pointer;
+}
+
+.path-country:hover {
+    fill: rgba(126, 167, 175, 0.6);
+}
+
+.path-country-light:hover {
+    fill: rgba(255, 255, 255, 0.24) !important;
+}
+
+.tspan-country {
+    font-style: normal;
+    font-variant: normal;
+    font-family: 'Noto';
+    font-size: 15px;
+    font-stretch: normal;
+    font-weight: 400;
+    user-select: none;
+    fill: white;
+    stroke: black;
+    stroke-width: 0px;
+    display: none;
+    cursor: pointer;
+}
+
+.tspan-country-small {
+    font-size: 10px !important;
+}
+
+.tspan-country-smaller {
+    font-size: 8px !important;
+}
+
+#Suriname_label,
+#Guyana_label {
+    transform: rotate(-45deg) !important;
+    transform-origin: center center !important;
+}
+
+.circle:hover {
+    fill: #bfd7e6 !important;
+}
+
+.circle-malta:hover {
+    fill: rgba(126, 167, 175, 0.5);
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+    #country-name {
+        font-size: 20px;
+    }
+
+    #wrapper {
+        padding-left: 5px;
+        padding-top: 150px;
+    }
+
+    #map-group {
+        transform: scale(1.2);
+    }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+    #country-name {
+        font-size: 30px;
+    }
+
+    #wrapper {
+        padding-top: 20px;
+    }
+
+    #map-group {
+        transform: scale(1.1);
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1000px) {
+    #country-name {
+        font-size: 40px;
+    }
+
+    #wrapper {
+        padding-top: 20px;
+        padding-left: 5%;
+    }
+
+    #country-name {
+        font-size: 30px;
+    }
+
+    #map-group {
+        transform: scale(1.05);
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1100px) {
+    #country-name {
+        font-size: 30px;
+    }
+
+    #wrapper {
+        padding-top: 50px;
+        padding-left: 10%;
+    }
+}
+
+@media (min-width: 1100px) and (max-width: 1200px) {
+    #country-name {
+        font-size: 30px;
+    }
+
+    #wrapper {
+        padding-top: 50px;
+        padding-left: 20%;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+    #country-name {
+        font-size: 30px;
+    }
+
+    #wrapper {
+        padding-top: 50px;
+        padding-left: 20%;
+    }
+}
+
+@media (min-width: 1300px) and (max-width: 1400px) {
+    #wrapper {
+        padding-top: 50px;
+        padding-left: 22%;
+    }
+
+    #country-name {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1500px) {
+    #wrapper {
+        padding-top: 50px;
+        padding-left: 25%;
+    }
+
+    #country-name {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 1500px) {
+    #wrapper {
+        padding-left: 28%;
+        padding-top: 50px;
+    }
+
+    #country-name {
+        font-size: 30px;
+    }
+}

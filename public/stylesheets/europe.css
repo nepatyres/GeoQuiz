@@ -1,0 +1,376 @@
+@font-face {
+    font-family: 'Inter-Regular';
+    src: url('../../assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../../assets/fonts/Raleway/Raleway-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto';
+    src: url('../../assets/fonts/noto/NotoSansLinearA-Regular.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #142733;
+    user-select: none;
+}
+
+#quiz-popup {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    transition: opacity 1s, transform 1s;
+}
+
+.popup {
+    padding: 0;
+    margin: 0;
+    border-radius: 15px;
+    position: relative;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    background-color: #142733;
+}
+
+.popup-content-main {
+    margin-top: 15%;
+}
+
+#quiz-popup-close-btn {
+    height: 45px;
+    width: 45px;
+    display: flex;
+    cursor: pointer;
+    fill: rgba(255, 255, 255, 0.8) !important;
+    transition: background-color 1s ease, fill 3s ease;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 12px;
+    margin-top: 12px;
+    border-radius: 50px;
+}
+
+#quiz-popup-close-btn:hover {
+    fill: rgba(255, 255, 255, 0.6) !important;
+    background-color: #182f3d;
+    transition: background-color 1s ease, fill 3s ease;
+}
+
+h1 {
+    color: white;
+    font-family: 'Inter-Regular';
+}
+
+.stats-main {
+    display: grid;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Inter-Regular';
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 20px;
+    margin-top: 60px;
+}
+
+#score-main,
+#attempts-main,
+#time-main {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#quiz-score,
+#quiz-attempts,
+#quiz-time {
+    color: white;
+}
+
+#new-game-btn {
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 255, 255, 0.25);
+    border-radius: 30px;
+    padding: 15px 45px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 80px;
+    font-size: 20px;
+    font-family: 'Raleway';
+    transition: 1s ease-in-out;
+}
+
+#new-game-btn:hover {
+    background-color: #182f3d;
+    transition: 1s ease-in-out;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+}
+
+#nav {
+    width: 100%;
+    height: 86px;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(29px);
+    align-items: center;
+    display: flex;
+}
+
+.nav-container {
+    display: grid;
+    flex-direction: row;
+    width: 90%;
+    margin: 0 auto;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.main-timer {
+    flex-direction: row;
+    display: flex;
+    justify-content: flex - start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+#btn-pause-svg,
+#btn-resume-svg {
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    fill: white;
+    border: none;
+    vertical-align: middle;
+}
+
+#btn-resume-svg {
+    display: none;
+}
+
+#btn-pause {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#btn-pause rect {
+    fill: white !important;
+}
+
+#timer {
+    color: white;
+    font-size: 30px;
+    font-family: 'Inter-Regular';
+    width: 100px;
+}
+
+#quiz-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#country-name {
+    font-family: 'Inter-Regular';
+    font-size: 50px;
+    color: white;
+    justify-content: center;
+    text-align: center;
+}
+
+#skip-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#skip-btn-svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+#toggler-main {
+    position: absolute;
+    top: 19px;
+    right: 33px;
+}
+
+#main-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #bfd7e6;
+    position: fixed;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: #bfd7e6;
+    cursor: grab;
+    position: fixed;
+}
+
+#map-group {
+    transform-origin: center;
+    transform: scale(1);
+    cursor: grab !important;
+}
+
+.path-country {
+    fill: rgb(126, 167, 175);
+    stroke: #bfd7e6;
+    stroke-width: 1px;
+    cursor: pointer;
+}
+
+.path-country:hover {
+    fill: rgba(126, 167, 175, 0.6);
+}
+
+.kosovo-country:hover {
+    fill: rgba(255, 255, 255, 0.24);
+}
+
+.tspan-country {
+    font-style: normal;
+    font-variant: normal;
+    font-family: 'Noto';
+    font-size: 10px;
+    font-stretch: normal;
+    font-weight: 400;
+    user-select: none;
+    fill: white;
+    stroke: black;
+    stroke-width: 0px;
+    display: none;
+    cursor: pointer;
+}
+
+.circle:hover {
+    fill: #bfd7e6 !important;
+}
+
+.circle-malta:hover {
+    fill: rgba(126, 167, 175, 0.5);
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+    #country-name {
+        font-size: 30px !important;
+    }
+
+    #wrapper {
+        margin-top: 400px !important;
+    }
+
+    #map-group {
+        transform: scale(1.6) !important;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+    #country-name {
+        font-size: 36px !important;
+    }
+
+    #wrapper {
+        margin-top: 250px !important;
+    }
+
+    #map-group {
+        transform: scale(1.6) !important;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1000px) {
+    #country-name {
+        font-size: 40px !important;
+    }
+
+    #wrapper {
+        margin-top: 150px !important;
+    }
+
+    #map-group {
+        transform: scale(1.5) !important;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1100px) {
+    #map-group {
+        transform: scale(1.6) !important;
+    }
+
+    #main-map {
+        position: fixed;
+    }
+}
+
+@media (min-width: 1100px) and (max-width: 1200px) {
+    #map-group {
+        transform: scale(1.4) !important;
+    }
+
+    #main-map {
+        position: fixed;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+    #map-group {
+        transform: scale(1.2) !important;
+    }
+
+    #main-map {
+        position: fixed;
+    }
+}
+
+@media (min-width: 1300px) and (max-width: 1400px) {
+    #map-group {
+        transform: scale(1) !important;
+    }
+
+    #main-map {
+        position: fixed;
+    }
+}
+
+@media (min-width: 1500px) {
+    #wrapper {
+        margin-left: 8%;
+    }
+}
