@@ -93,7 +93,7 @@ async function run() {
 }
 run().catch(console.dir);
 
-app.use(session(sessionConfig));
+// app.use(session(sessionConfig));
 app.use(flash());
 
 app.use((req, res, next) => {
