@@ -46,30 +46,30 @@ app.use(express.static(path.join(__dirname, 'models')));
 app.use('/GeoQuiz/public', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
-const store = MongoStore.create({
-    mongoUrl: dbUrl,
-    touchAfter: 24 * 60 * 60,
-    crypto: {
-        secret: sessionSecret,
-    }
-});
+// const store = MongoStore.create({
+//     mongoUrl: dbUrl,
+//     touchAfter: 24 * 60 * 60,
+//     crypto: {
+//         secret: sessionSecret,
+//     }
+// });
 
-store.on('error', function (e) {
-    console.log('session store error', e)
-})
+// store.on('error', function (e) {
+//     console.log('session store error', e)
+// })
 
-const sessionConfig = {
-    name: 'session',
-    store,
-    secret: sessionSecret,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        httpOnly: true,
-        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 * 60 * 60 * 24 * 7
-    }
-}
+// const sessionConfig = {
+//     name: 'session',
+//     store,
+//     secret: sessionSecret,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         httpOnly: true,
+//         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+//         maxAge: 1000 * 60 * 60 * 24 * 7
+//     }
+// }
 
 const client = new MongoClient(uri, {
     serverApi: {
@@ -78,6 +78,7 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
+
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
