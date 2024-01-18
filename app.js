@@ -58,18 +58,18 @@ app.use(express.urlencoded({ extended: true }));
 //     console.log('session store error', e)
 // })
 
-// const sessionConfig = {
-//     name: 'session',
-//     store,
-//     secret: sessionSecret,
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         httpOnly: true,
-//         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-//         maxAge: 1000 * 60 * 60 * 24 * 7
-//     }
-// }
+const sessionConfig = {
+    name: 'session',
+    // store,
+    secret: sessionSecret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
 
 const client = new MongoClient(uri, {
     serverApi: {
@@ -93,7 +93,7 @@ async function run() {
 }
 run().catch(console.dir);
 
-// app.use(session(sessionConfig));
+app.use(session(sessionConfig));
 app.use(flash());
 
 app.use((req, res, next) => {
