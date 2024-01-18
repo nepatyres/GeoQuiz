@@ -18,7 +18,9 @@ const MongoStore = require('connect-mongo');
 
 const userRoutes = require('./routes/users.js');
 
-const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/GeoQuiz';
+const sessionSecret = process.env.SESSION_SECRET || 'fallbackSecret';
+
+const dbUrl = process.env.DB_URL;
 mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
@@ -44,7 +46,9 @@ app.use(express.urlencoded({ extended: true }));
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
-    secret: 'thisshouldbeabettersecret!',
+    crypto: {
+        secret: sessionSecret,
+    }
 });
 
 store.on('error', function (e) {
@@ -54,7 +58,7 @@ store.on('error', function (e) {
 const sessionConfig = {
     name: 'session',
     store,
-    secret: 'thisshouldbesecret!',
+    secret: sessionSecret,
     resave: false,
     saveUninitialized: true,
     cookie: {
