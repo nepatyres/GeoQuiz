@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -10,10 +14,12 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const User = require('./models/user');
 const LocalStrategy = require('passport-local');
+const MongoStore = require('connect-mongo');
 
 const userRoutes = require('./routes/users.js');
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/GeoQuiz';
 
-mongoose.connect('mongodb://127.0.0.1:27017/GeoQuiz', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -38,8 +44,21 @@ app.use(express.static(path.join(__dirname, 'models')));
 app.use('/GeoQuiz/public', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
+});
+
+
+store.on('error', function (e) {
+    console.log('session store error', e)
+})
 
 const sessionConfig = {
+    store,
     secret: 'thisshouldbesecret!',
     resave: false,
     saveUninitialized: true,
