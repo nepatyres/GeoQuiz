@@ -17,8 +17,8 @@ const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo');
 
 const userRoutes = require('./routes/users.js');
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/GeoQuiz';
 
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/GeoQuiz';
 mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
@@ -44,10 +44,7 @@ app.use(express.urlencoded({ extended: true }));
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
-    crypto: {
-        secret: 'thisshouldbeabettersecret!'
-    },
-    client: mongoose.connection.getClient(), // Add this line
+    secret: 'thisshouldbeabettersecret!',
 });
 
 store.on('error', function (e) {
@@ -55,6 +52,7 @@ store.on('error', function (e) {
 })
 
 const sessionConfig = {
+    name: 'session',
     store,
     secret: 'thisshouldbesecret!',
     resave: false,
