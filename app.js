@@ -15,22 +15,19 @@ const passport = require('passport');
 const User = require('./models/user');
 const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo');
-const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const userRoutes = require('./routes/users.js');
 
 const sessionSecret = process.env.SESSION_SECRET || 'fallbackSecret';
 
-const uri = process.env.URI;
-
-const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/GeoQuiz';
 mongoose.connect(dbUrl);
 
-// const db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-// db.once('open', function () {
-//     console.log('Connected to MongoDB');
-// });
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', function () {
+    console.log('Connected to MongoDB');
+});
 
 const app = express();
 
@@ -46,21 +43,21 @@ app.use(express.static(path.join(__dirname, 'models')));
 app.use('/GeoQuiz/public', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
-// const store = MongoStore.create({
-//     mongoUrl: dbUrl,
-//     touchAfter: 24 * 60 * 60,
-//     crypto: {
-//         secret: sessionSecret,
-//     }
-// });
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: sessionSecret,
+    }
+});
 
-// store.on('error', function (e) {
-//     console.log('session store error', e)
-// })
+store.on('error', function (e) {
+    console.log('session store error', e)
+})
 
 const sessionConfig = {
     name: 'session',
-    // store,
+    store,
     secret: sessionSecret,
     resave: false,
     saveUninitialized: true,
@@ -70,28 +67,6 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
-
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
-
-async function run() {
-    try {
-        // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
-        // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
-    }
-}
-run().catch(console.dir);
 
 app.use(session(sessionConfig));
 app.use(flash());
