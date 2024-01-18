@@ -15,19 +15,22 @@ const passport = require('passport');
 const User = require('./models/user');
 const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const userRoutes = require('./routes/users.js');
 
 const sessionSecret = process.env.SESSION_SECRET || 'fallbackSecret';
 
+const uri = process.env.URI;
+
 const dbUrl = process.env.DB_URL;
 mongoose.connect(dbUrl);
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function () {
-    console.log('Connected to MongoDB');
-});
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// db.once('open', function () {
+//     console.log('Connected to MongoDB');
+// });
 
 const app = express();
 
@@ -67,6 +70,27 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
+
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
+});
+async function run() {
+    try {
+        // Connect the client to the server	(optional starting in v4.7)
+        await client.connect();
+        // Send a ping to confirm a successful connection
+        await client.db("admin").command({ ping: 1 });
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    } finally {
+        // Ensures that the client will close when you finish/error
+        await client.close();
+    }
+}
+run().catch(console.dir);
 
 app.use(session(sessionConfig));
 app.use(flash());
