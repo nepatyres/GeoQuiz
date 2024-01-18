@@ -22,7 +22,6 @@ const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/GeoQuiz';
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    ssl: true,
 });
 
 const db = mongoose.connection;
@@ -50,9 +49,9 @@ const store = MongoStore.create({
     touchAfter: 24 * 60 * 60,
     crypto: {
         secret: 'thisshouldbeabettersecret!'
-    }
+    },
+    client: mongoose.connection.getClient(), // Add this line
 });
-
 
 store.on('error', function (e) {
     console.log('session store error', e)
