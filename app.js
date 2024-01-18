@@ -17,7 +17,7 @@ const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo');
 
 const userRoutes = require('./routes/users.js');
-const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/GeoQuiz';
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1/GeoQuiz";
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
