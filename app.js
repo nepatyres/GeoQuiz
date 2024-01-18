@@ -19,10 +19,7 @@ const MongoStore = require('connect-mongo');
 const userRoutes = require('./routes/users.js');
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/GeoQuiz';
 
-mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
