@@ -88,7 +88,6 @@ body {
 
 
 h1 {
-
     color: white;
     font-size: 50px;
     font-weight: 300;
@@ -261,4 +260,22 @@ h1 {
     fill: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     transition: fill 3s ease;
+}
+
+@media(width < 800px) {
+    .logo {
+        font-size: 50px;
+    }
+
+    .main-content {
+        margin-top: 45%;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    #link-to-main {
+        margin-top: 60px;
+    }
 }
